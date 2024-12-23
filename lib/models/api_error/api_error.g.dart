@@ -9,7 +9,7 @@ part of 'api_error.dart';
 _$ApiErrorImpl<T> _$$ApiErrorImplFromJson<T>(Map<String, dynamic> json) =>
     _$ApiErrorImpl<T>(
       message: json['status_message'] as String,
-      code: json['code'] as int?,
+      code: (json['code'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$ApiErrorImplToJson<T>(_$ApiErrorImpl<T> instance) =>

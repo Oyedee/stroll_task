@@ -1,0 +1,120 @@
+{
+  "status": "success",
+  "data": {
+    "questions": [
+      {
+        "id": "q001",
+        "type": "multiple_choice",
+        "author": {
+          "id": "u123",
+          "name": "Angelina",
+          "age": 28,
+          "profile_image": "assets/images/profiles/angelina.jpg"
+        },
+        "content": {
+          "question": "What is your favorite time of the day?",
+          "quote": "Mine is definitely the peace in the morning.",
+          "options": [
+            {
+              "id": "opt1",
+              "text": "The peace in the early mornings",
+              "vote_count": 423
+            },
+            {
+              "id": "opt2",
+              "text": "The magical golden hours",
+              "vote_count": 567
+            },
+            {
+              "id": "opt3",
+              "text": "Wind-down time after dinners",
+              "vote_count": 289
+            },
+            {
+              "id": "opt4",
+              "text": "The serenity past midnight",
+              "vote_count": 345
+            }
+          ]
+        },
+        "metadata": {
+          "created_at": "2024-12-23T09:41:00Z",
+          "expires_at": "2024-12-24T09:41:00Z",
+          "total_responses": 1624,
+          "engagement_score": 0.87
+        }
+      },
+      {
+        "id": "q002",
+        "type": "multiple_choice",
+        "author": {
+          "id": "u456",
+          "name": "Marcus",
+          "age": 31,
+          "profile_image": "assets/images/profiles/marcus.jpg"
+        },
+        "content": {
+          "question": "What's your ideal weekend activity?",
+          "quote": "Nothing beats a hike in nature for me.",
+          "options": [
+            {
+              "id": "opt1",
+              "text": "Outdoor adventures",
+              "vote_count": 678
+            },
+            {
+              "id": "opt2",
+              "text": "Cozy indoor relaxation",
+              "vote_count": 543
+            },
+            {
+              "id": "opt3",
+              "text": "Social gatherings",
+              "vote_count": 432
+            },
+            {
+              "id": "opt4",
+              "text": "Creative projects",
+              "vote_count": 321
+            }
+          ]
+        },
+        "metadata": {
+          "created_at": "2024-12-23T08:30:00Z",
+          "expires_at": "2024-12-24T08:30:00Z",
+          "total_responses": 1974,
+          "engagement_score": 0.92
+        }
+      }
+    ],
+    "room_info": {
+      "id": "room001",
+      "name": "Stroll Bonfire",
+      "active_users": 103,
+      "time_remaining": "22:00:00",
+      "theme": "daily_reflections",
+      "status": "active"
+    },
+    "user_interactions": {
+      "answered_questions": ["q001"],
+      "selected_options": {
+        "q001": "opt4"
+      },
+      "matches": [
+        {
+          "user_id": "u789",
+          "name": "Sarah",
+          "age": 27,
+          "match_score": 0.85,
+          "common_answers": 3
+        }
+      ]
+    }
+  },
+  "pagination": {
+    "current_page": 1,
+    "total_pages": 5,
+    "total_items": 10,
+    "items_per_page": 2
+  }
+}

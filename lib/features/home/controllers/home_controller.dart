@@ -1,40 +1,35 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../providers/repositories_providers.dart';
-import '../../../repositories/movie/http_movie_repository.dart';
-import '../models/movie/movie.dart';
+import '../../../repositories/stroll/stroll_repository.dart';
+import '../models/stroll/stroll_question.dart';
 
 final currentPageProvider = StateProvider<int>((ref) => 1);
 final totalPagesProvider = StateProvider<int>((ref) => 1);
 
-final homeControllerProvider = StateNotifierProvider<HomeController, AsyncValue<List<Movie>>>((ref) {
-  final movieRepository = ref.read(movieRepositoryProvider);
+final homeControllerProvider = StateNotifierProvider<HomeController, AsyncValue<StrollRoom>>((ref) {
+  final movieRepository = ref.read(strollRepositoryProvider);
 
   return HomeController(ref, movieRepository);
 });
 
-class HomeController extends StateNotifier<AsyncValue<List<Movie>>> {
-  HomeController(this.ref, this.movieRepository) : super(const AsyncLoading()) {
-    getMovies();
+class HomeController extends StateNotifier<AsyncValue<StrollRoom>> {
+  HomeController(this.ref, this.strollRepository) : super(const AsyncLoading()) {
+    getRoom();
   }
-  final HttpMovieRepository movieRepository;
+  final StrollRepository strollRepository;
   final Ref ref;
 
-  Future<void> getMovies() async {
+  Future<void> getRoom() async {
     state = const AsyncLoading();
 
     /// AsyncValue.guard() automatically catches all exceptions
     state = await AsyncValue.guard(() async {
       /// Fetch movies
-      final movieData = await movieRepository.getMovies(
-        page: ref.read(currentPageProvider),
-      );
-
-      /// Set total pages
-      ref.read(totalPagesProvider.notifier).state = movieData.totalPages;
+      final room = await strollRepository.getRooms();
 
       /// Return list of movies
-      return movieData.movies;
+      return room;
     });
   }
 }

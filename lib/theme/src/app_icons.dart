@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 class AppIcons {
   /// Define local assets
-  static const String cinnamon = 'assets/icons/cinnamon_logo.svg';
+  static const String cinnamon = 'assets/icons/stroll.svg';
 
   static const double sizeSmall = 22;
   static const double sizeMedium = 35;
