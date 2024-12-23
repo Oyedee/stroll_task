@@ -9,11 +9,7 @@ class AppThemes {
   static ThemeData primary({bool isDark = false}) => ThemeData(
         useMaterial3: true,
         primaryColor: AppColors.primary,
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.indigo,
-        ),
         scaffoldBackgroundColor: AppColors.background,
-        backgroundColor: AppColors.background,
         cardColor: AppColors.white,
         pageTransitionsTheme: const PageTransitionsTheme(
           builders: {
@@ -50,5 +46,8 @@ class AppThemes {
           backgroundColor: AppColors.white,
         ),
         splashFactory: defaultTargetPlatform == TargetPlatform.iOS ? NoSplash.splashFactory : InkSplash.splashFactory,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.indigo,
+        ).copyWith(surface: AppColors.background),
       );
 }

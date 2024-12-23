@@ -1,4 +1,4 @@
-# Flutter project Template
+# Stroll
 ## **Table of Contents**
 
 - [Flutter Riverpod App Template](#flutter-riverpod-app-template)
@@ -21,8 +21,6 @@
 - [How to use](#how-to-use)
 
 
-# Flutter Riverpod App Template
-This project has everything you need to start a Flutter project with Riverpod as the state management tool.
 
 # Architecture structure
 This template is built with architecture that consists of four main layers: Presentation (UI), Service, Domain (Models, DTOs)
@@ -59,15 +57,6 @@ They are not concerned about parsing data or updating the widget state.
 
 ### Api
 - This service communicates with remote sources (REST API, sockets, etc.)
-
-### Firestore
-- This service communicates with Cloud Firestore.
-
-### Firebase Auth
-- This service communicates with Firebase Authentication.
-
-### Location
-- This service communicates with device's location (via GPS and/or Google Services)
 
 ### Storage
 - This service communicates with device's storage to provide data caching.
