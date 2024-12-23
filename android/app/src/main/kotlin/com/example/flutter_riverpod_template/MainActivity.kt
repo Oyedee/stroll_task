@@ -1,4 +1,4 @@
-package agency.cinnamon.flutter_template
+package com.app.stroll
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -43,7 +43,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "agency.cinnamon.flutter_template"
+        applicationId "com.app.stroll"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()

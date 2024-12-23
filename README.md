@@ -1,7 +1,7 @@
 # Stroll
 ## **Table of Contents**
 
-- [Flutter Riverpod App Template](#flutter-riverpod-app-template)
+- [Stroll](#stroll)
 - [Architecture structure](#architecture-structure)
   * [Presentation](#presentation)
     + [Widgets](#widgets)
@@ -11,9 +11,6 @@
     + [Repositories](#repositories)
   * [Services](#services)
     + [Api](#api)
-    + [Firestore](#firestore)
-    + [Firebase Auth](#firebase-auth)
-    + [Location](#location)
     + [Storage](#storage)
     + [Device/Device Info](#device/device-info)
 - [Folder structure](#folder-structure)
