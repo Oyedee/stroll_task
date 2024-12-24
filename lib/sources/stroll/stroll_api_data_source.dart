@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
-import '../../models/stroll/stroll_question.dart';
+import '../../models/stroll/stroll_room.dart';
 import '../../services/api/dio_service.dart';
+
+typedef Json = Map<String, dynamic>;
 
 abstract class StrollApiDataSource {
   Future<StrollRoom> getStrollRooms();
@@ -17,11 +20,12 @@ class StrollApiDataSourceImpl implements StrollApiDataSource {
 
   @override
   Future<StrollRoom> getStrollRooms() async {
-    await Future.delayed(const Duration(milliseconds: 800));
+    await Future.delayed(const Duration(seconds: 3));
 
-    const _mockData = 'assets/json/fake_data.json';
-    final json = jsonDecode(_mockData);
-    final response = StrollRoom.fromJson(json);
+    const _mockData = '/Users/mac/StudioProjects/stroll_task/assets/json/fake_data.json';
+    final file = await File(_mockData).readAsString();
+    final json = jsonDecode(file) as Json;
+    final response = StrollRoom.fromJson(json['data']);
     return response;
   }
 

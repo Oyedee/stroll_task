@@ -37,12 +37,6 @@ Future<void> main() async {
   final deviceInfoService = DeviceInfoService();
   await deviceInfoService.initProperInfo();
 
-  /// Initialize Firebase
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
-
-  /// Run the `FlutterTemplateApp` app
   runApp(
     ProviderScope(
       observers: [ProvidersLogger()],
@@ -55,22 +49,22 @@ Future<void> main() async {
         path: 'assets/translations',
         useOnlyLangCode: true,
         fallbackLocale: const Locale('en'),
-        child: FlutterTemplateApp(),
+        child: App(),
       ),
     ),
   );
 }
 
 /// Starting point of our Flutter application
-class FlutterTemplateApp extends StatelessWidget {
-  FlutterTemplateApp({super.key});
+class App extends StatelessWidget {
+  App({super.key});
 
   AppRouter? router;
 
   @override
   Widget build(BuildContext context) => ScreenUtilInit(
         /// Size of the device the designer uses in their designs on Figma
-        designSize: const Size(412, 732),
+        designSize: const Size(375, 812),
         builder: (_, __) => Consumer(
           builder: (context, ref, child) {
             router ??= AppRouter(ref);

@@ -1,5 +1,5 @@
 import '../../../features/home/models/stroll/stroll_question.dart' as model;
-import '../../../models/stroll/stroll_question.dart' as api;
+import '../../../models/stroll/stroll_room.dart' as api;
 
 extension StrollQuestionMapper on api.StrollRoom {
   model.StrollRoom toModel() => model.StrollRoom(

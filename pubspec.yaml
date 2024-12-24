@@ -94,5 +94,4 @@ flutter:
     - assets/translations/
     - assets/icons/
     - assets/images/
-    - assets/movie_list.json
     - assets/json/

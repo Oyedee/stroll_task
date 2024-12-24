@@ -9,7 +9,7 @@
           "id": "u123",
           "name": "Angelina",
           "age": 28,
-          "profile_image": "assets/images/profiles/angelina.jpg"
+          "profile_image": "assets/images/avatar_pic.png"
         },
         "content": {
           "question": "What is your favorite time of the day?",
@@ -51,7 +51,7 @@
           "id": "u456",
           "name": "Marcus",
           "age": 31,
-          "profile_image": "assets/images/profiles/marcus.jpg"
+          "profile_image": "assets/images/avatar_pic.png"
         },
         "content": {
           "question": "What's your ideal weekend activity?",
