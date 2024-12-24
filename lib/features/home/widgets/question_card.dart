@@ -5,7 +5,7 @@ import '../../../theme/src/app_icons.dart';
 import '../models/stroll/stroll_question.dart';
 import 'option_button.dart';
 
-class QuestionCard extends StatelessWidget {
+class QuestionCard extends StatefulWidget {
   final Question question;
 
   const QuestionCard({
@@ -14,6 +14,11 @@ class QuestionCard extends StatelessWidget {
   });
 
   @override
+  State<QuestionCard> createState() => _QuestionCardState();
+}
+
+class _QuestionCardState extends State<QuestionCard> {
+  @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -21,78 +26,82 @@ class QuestionCard extends StatelessWidget {
           children: [
             // Author Info
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
-                  radius: 20,
-                  backgroundImage: AssetImage(question.author.profileImage),
+                  radius: 30,
+                  backgroundImage: AssetImage(widget.question.author.profileImage),
                 ),
                 const SizedBox(width: 12),
-                Text(
-                  '${question.author.name}, ${question.author.age}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${widget.question.author.name}, ${widget.question.author.age}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        widget.question.content.question,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                    ],
                   ),
                 ),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 64),
+              child: Text(
+                '"${widget.question.content.quote}"',
+                style: const TextStyle(
+                  color: Color.fromRGBO(203, 201, 255, 0.7),
+                  fontSize: 12,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
             const SizedBox(height: 16),
-
-            // Question
-            Text(
-              question.content.question,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 8),
-
-            // Quote
-            Text(
-              '"${question.content.quote}"',
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.7),
-                fontSize: 16,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-            const SizedBox(height: 24),
-
             GridView.count(
               crossAxisCount: 2,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              mainAxisSpacing: 6,
-              crossAxisSpacing: 6,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
               childAspectRatio: 2.5,
               children: List.generate(
-                question.content.options.length,
+                widget.question.content.options.length,
                 (index) => OptionButton(
-                  label: question.content.options[index].text,
+                  label: widget.question.content.options[index].text,
                   optionLetter: String.fromCharCode(65 + index),
-                  isSelected: index == 3,
-                  onTap: () {
-                    // Handle option selection
-                  },
+                  isSelected: index == 0,
+                  onTap: () {},
                 ),
               ),
             ),
 
             const SizedBox(height: 16),
-
-            // Action Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 // Bottom Text
-                Text(
+                const Text(
                   'Pick your option.\nSee who has a similar mind.',
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.7),
+                    color: AppColors.white,
                     fontSize: 14,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
                 const Spacer(),
@@ -106,7 +115,7 @@ class QuestionCard extends StatelessWidget {
                       width: 2.2,
                     ),
                   ),
-                  child: AppIcons.icon(AppIcons.mic),
+                  child: AppIcons.icon(AppIcons.mic, size: 28),
                 ),
                 const SizedBox(width: 12),
                 Container(
@@ -116,13 +125,15 @@ class QuestionCard extends StatelessWidget {
                     shape: BoxShape.circle,
                     border: Border.all(
                       color: AppColors.secondary,
-                      width: 2.2,
                     ),
                   ),
-                  child: const Icon(
-                    Icons.arrow_forward,
-                    color: AppColors.primary,
-                    size: 24,
+                  child: const FittedBox(
+                    fit: BoxFit.cover,
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: AppColors.primary,
+                      size: 24,
+                    ),
                   ),
                 ),
               ],

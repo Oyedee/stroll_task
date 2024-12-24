@@ -8,7 +8,14 @@ import '../widgets/question_card.dart';
 
 class StrollScreen extends ConsumerWidget {
   final StrollRoom room;
-  const StrollScreen({required this.room, super.key});
+  final double height;
+  final double width;
+  const StrollScreen({
+    required this.room,
+    required this.height,
+    required this.width,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Stack(
@@ -18,8 +25,13 @@ class StrollScreen extends ConsumerWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(AppIcons.backgroundPicture),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.topCenter,
                 ),
+              ),
+              child: SizedBox(
+                height: height,
+                width: width,
               ),
             ),
           ),
@@ -40,6 +52,7 @@ class StrollScreen extends ConsumerWidget {
               ),
               child: SafeArea(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Header
                     Padding(
@@ -55,21 +68,21 @@ class StrollScreen extends ConsumerWidget {
                                 style: const TextStyle(
                                   fontSize: 34,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xffCCC8FF),
+                                  color: AppColors.secondary,
                                   shadows: [
                                     Shadow(
                                       offset: Offset(0, 2),
-                                      blurRadius: 2,
-                                      color: Color(0xffBEBEBE),
+                                      blurRadius: 20,
+                                      color: Color.fromRGBO(0, 0, 0, 0.2),
                                     ),
                                   ],
                                 ),
                               ),
-                              const SizedBox(width: 8),
+                              const SizedBox(width: 4),
                               const Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 size: 24,
-                                color: AppColors.secondary,
+                                color: Color.fromRGBO(179, 173, 246, 1),
                               ),
                             ],
                           ),
@@ -83,7 +96,7 @@ class StrollScreen extends ConsumerWidget {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                '22h 00m',
+                                room.roomInfo.timeRemaining,
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.9),
                                   fontSize: 14,
@@ -97,7 +110,7 @@ class StrollScreen extends ConsumerWidget {
                               ),
                               const SizedBox(width: 4),
                               Text(
-                                '103',
+                                '${room.roomInfo.activeUsers}',
                                 style: TextStyle(
                                   color: Colors.white.withOpacity(0.9),
                                   fontSize: 14,
@@ -113,9 +126,7 @@ class StrollScreen extends ConsumerWidget {
                     const Spacer(),
 
                     // Question Card
-                    QuestionCard(
-                      question: room.questions[0],
-                    ),
+                    QuestionCard(question: room.questions[0]),
 
                     const SizedBox(height: 16),
                   ],
@@ -141,12 +152,11 @@ class BottomNavItem extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.purple.withOpacity(0.2) : Colors.transparent,
+          color: isSelected ? AppColors.secondary.withOpacity(0.2) : Colors.transparent,
           shape: BoxShape.circle,
         ),
         child: AppIcons.icon(
           icon,
-          color: isSelected ? Colors.purple : Colors.white,
           size: 24,
         ),
       );
