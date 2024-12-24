@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'stroll_room.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class StrollRoom {
   final List<Question> questions;
   final RoomInfo roomInfo;
